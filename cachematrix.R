@@ -1,15 +1,34 @@
-## Put comments here that give an overall description of what your
-## functions do
+##To solve this problem use two functions called makeCacheMatrix and cacheSolve
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
+makeCacheMatrix <- function( matt = matrix() ) {
+j <- NULL #cache value at first contains nothing so it is Null
+    set <- function( matrix ){
+       matt <<- matr
+         j <<- NULL
+    }
+getmatt <- function() matt
+setInvs <- function(solve) j<<- solve #solving inversed matrix and setting inverse
+getInverse <- function() j #getting inversed value
+list(set = set, get = get,
+    setInvs = setInvs,
+    getInvs = getInvs)
 }
-
-
-## Write a short comment describing this function
-
+#Function cacheSolve compute inverse from matrix which was from function makeCacheMatrix
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    matt <- x$getInvs()
+    ##condition to check the existence of cached value
+    if(!is.null(matt) ) {
+            message("getting cach ed of invers matt")
+            return(matt)
+    }
+    info <- x$getm()
+    ##compute the inverse by using matrix multiplication
+    matt <- solve(info) %*% info
+    x$setInverse(matt)
+    matt
 }
+##test the matrix and problem
+matt <-makeCacheMatrix(matrix(c(5,4,1,3,6,8,2,7,0),ncol=3,nrow=3))
+cacheSolve(matt)
+x$getmatt()
+x$getInvs()
